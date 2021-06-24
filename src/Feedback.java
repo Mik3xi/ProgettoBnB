@@ -84,7 +84,7 @@ public class Feedback {
     }
 
     enum Valutazione {
-        //valutazione che prenderea in ingresso sempre un int(1-5) restituira valore del feedback
+        //valutazione che prenderea in ingresso sempre un String(1-5) restituira valore (int) del feedback
         PESSIMO(1), SCARSO(2), DISCRETO(3), BUONO(4), OTTIMO(5);
         private final int value;
 
