@@ -1,3 +1,4 @@
+import java.util.UUID;
 
 public class Utente {
 
@@ -7,12 +8,17 @@ public class Utente {
     private String cognome;
     private String indirizzoEmail;
 
-
-
+    //COSTRUTTORE
+    public Utente(String nome, String cognome, String indirizzoEmail) {
+        setId();
+        setNome(nome);
+        setCognome(cognome);
+        setIndirizzoEmail(indirizzoEmail);
+    }
 
     //GETTER AND SETTER
     public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public void setId() { this.id = UUID.randomUUID().toString(); }
 
     public String getNome() { return nome; }
     public void setNome(String nome) {
@@ -31,4 +37,5 @@ public class Utente {
         //Gestire eccezioni formato non valido (null/ formati diversi da ******@*****.it/com/org ...etc)
         this.indirizzoEmail = indirizzoEmail;
     }
+    
 }
