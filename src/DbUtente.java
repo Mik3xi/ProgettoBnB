@@ -1,23 +1,27 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class DbUtente {
-    HashMap <String,Utente> databaseUtente = new HashMap<>();
+    Map<String,Utente> databaseUtente = new HashMap<>();
 
-    public DbUtente(HashMap<String, Utente> databaseUtente) {
+    public DbUtente(Map<String, Utente> databaseUtente) {
         this.databaseUtente = databaseUtente;
     }
 
-    public HashMap<String, Utente> getDatabaseUtente() {
+    public Map<String, Utente> getDatabaseUtente() {
         return databaseUtente;
     }
 
-    public void setDatabaseUtente(HashMap<String, Utente> databaseUtente) {
+    public void setDatabaseUtente(Map<String, Utente> databaseUtente) {
         this.databaseUtente = databaseUtente;
     }
 
     public Utente rilevaUtente(String key){
         return databaseUtente.get(key);
     }
+
+
+
 
 
 }
