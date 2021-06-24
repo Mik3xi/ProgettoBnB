@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -32,13 +34,19 @@ public class DbAbitazione {
 
 
     public Abitazione abitazioneGettonata(){
+        ArrayList<Prenotazione> prenotazioniLastMonth = new ArrayList<>();
         int maxprenotazioni=0;
-        int idgettonato=0;
+        ArrayList<Integer> idgettonato= new ArrayList<>();
             for (Integer integer : databasePrenotazione.keySet()) {
-                if (numeroPrenotazioni(integer)>maxprenotazioni) {
-                    maxprenotazioni = numeroPrenotazioni();
-                    idgettonato = integer;
+            for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
+                    if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
+                        prenotazioniLastMonth.add(prenotazione);
                 }
+                if(prenotazioniLastMonth.size()>=maxprenotazioni && maxprenotazioni!=0) {
+                    maxprenotazioni = prenotazioniLastMonth.size();
+                    idgettonato.add(integer);
+                }else {
+                    prenotazioniLastMonth.clear();
             }
             return databaseAbitazioni.get(idgettonato);
         }
