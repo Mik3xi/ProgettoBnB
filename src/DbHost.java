@@ -16,7 +16,7 @@ public class DbHost {
         this.dbHost = dbHost;
     }
 
-    public void aggiungiutente(Host host){
+    public void aggiungihost(Host host){
         if (getDbHost().containsKey(host.getId())){
             System.out.println("utente esistente");
         }
