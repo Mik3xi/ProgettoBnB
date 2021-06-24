@@ -1,18 +1,21 @@
+import java.util.Objects;
 import java.util.UUID;
 
-public class Abitazione {
+public class Abitazione{
 
     //ATTRIBUTI
-    private String id;
+    private int id;
     private String nome;
     private String indirizzi;
     private int numeroLocali;
     private int numeroPostiLetto;
     private int numeroPiano;
 
+    private static int idProgressivo = 1;
+
 
     //COSTRUTTORE
-    public Abitazione(String id, String nome, String indirizzi, int numeroLocali, int numeroPostiLetto, int numeroPiano) {
+    public Abitazione(String nome, String indirizzi, int numeroLocali, int numeroPostiLetto, int numeroPiano) {
         this.id = id;
         this.nome = nome;
         this.indirizzi = indirizzi;
@@ -22,13 +25,12 @@ public class Abitazione {
     }
 
  //GETTER E SETTER
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     public void setId() {
-        UUID uuid = UUID.randomUUID();
-        this.id = uuid.toString();
+        this.id = idProgressivo++;
     }
 
 
@@ -86,5 +88,19 @@ public class Abitazione {
                 ", numeroPostiLetto=" + numeroPostiLetto +
                 ", numeroPiano=" + numeroPiano +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Abitazione that = (Abitazione) o;
+        return id == that.id && numeroLocali == that.numeroLocali && numeroPostiLetto == that.numeroPostiLetto && numeroPiano == that.numeroPiano && Objects.equals(nome, that.nome) && Objects.equals(indirizzi, that.indirizzi);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, indirizzi, numeroLocali, numeroPostiLetto, numeroPiano);
     }
 }
