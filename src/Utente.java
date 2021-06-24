@@ -37,5 +37,5 @@ public class Utente {
         //Gestire eccezioni formato non valido (null/ formati diversi da ******@*****.it/com/org ...etc)
         this.indirizzoEmail = indirizzoEmail;
     }
-    
+
 }
