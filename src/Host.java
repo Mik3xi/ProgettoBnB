@@ -1,6 +1,5 @@
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 public class Host extends Utente{
 
@@ -10,8 +9,8 @@ public class Host extends Utente{
     private Set<Abitazione> abitazioni;
 
     //COSTRUTTORE
-    public Host(String nome, String cognome, String indirizzoEmail) {
-        super(nome, cognome, indirizzoEmail);
+    public Host(String nome, String cognome, String indirizzoEmail, String username, String password) {
+        super(nome, cognome, indirizzoEmail,username,password);
         setCodiceHost();
         setTipo(tipoHost.SEMPLICE); //Di default un nuovo Host ha 0 prenotazioni
         setAbitazioni();

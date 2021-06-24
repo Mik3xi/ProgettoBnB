@@ -1,22 +1,25 @@
 import java.util.Deque;
-import java.util.UUID;
 
 public class Utente{
 
     //ATTRIBUTI
     private int id;
     private static int idProgressivo = 1;
+    private String username;
+    private String password;
     private String nome;
     private String cognome;
     private String indirizzoEmail;
     //private Deque<Prenotazione> prenotazioni; //Possiamo accedere così in politica LIFO con PeekLast
 
     //COSTRUTTORE
-    public Utente(String nome, String cognome, String indirizzoEmail) {
+    public Utente(String nome, String cognome, String indirizzoEmail,String username,String password) {
         setId();
         setNome(nome);
         setCognome(cognome);
         setIndirizzoEmail(indirizzoEmail);
+        setUsername(username);
+        setPassword(password);
     }
 
     //GETTER AND SETTER
@@ -41,4 +44,9 @@ public class Utente{
         this.indirizzoEmail = indirizzoEmail;
     }
 
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 }
