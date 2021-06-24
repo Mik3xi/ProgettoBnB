@@ -3,21 +3,21 @@ import java.util.Map;
 import java.util.Set;
 
 public class DbAbitazione {
-    Map<String, Set<Prenotazione>> databaseAbitazione = new HashMap<String, Set<Prenotazione>>();
+    Map<Integer, Set<Prenotazione>> databaseAbitazione = new HashMap<Integer, Set<Prenotazione>>();
 
-    public DbAbitazione(Map<String, Set<Prenotazione>> databaseAbitazione) {
+    public DbAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
         this.databaseAbitazione = databaseAbitazione;
     }
 
-    public Map<String, Set<Prenotazione>> getDatabaseAbitazione() {
+    public Map<Integer, Set<Prenotazione>> getDatabaseAbitazione() {
         return databaseAbitazione;
     }
 
-    public void setDatabaseAbitazione(Map<String, Set<Prenotazione>> databaseAbitazione) {
+    public void setDatabaseAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
         this.databaseAbitazione = databaseAbitazione;
     }
 
-    public void rilevaPrenotazioni(String key){
+    public void rilevaPrenotazioni(Integer key){
         databaseAbitazione.get(key);
     }
 
