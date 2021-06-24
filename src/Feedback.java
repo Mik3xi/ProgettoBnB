@@ -32,7 +32,7 @@ public class Feedback {
     public int getValutazione() {
         return valutazione.getValue();
     }
-    //fine Costruttori
+    //fine get/setter
 
 
     public void setValutazione(Valutazione valutazione) {
