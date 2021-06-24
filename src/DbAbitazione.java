@@ -48,7 +48,6 @@ public class DbAbitazione {
             } else prenotazioniLastMonth.clear();
             }
             return databaseAbitazioni.get(idgettonato);
-
     }
 
 
