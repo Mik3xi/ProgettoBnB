@@ -1,4 +1,4 @@
-
+import java.util.UUID;
 
 public class Abitazione {
 
@@ -28,7 +28,7 @@ public class Abitazione {
 
     public void setId() {
         UUID uuid = UUID.randomUUID();
-        this.ID = uuid.toString();
+        this.id = uuid.toString();
     }
 
 
@@ -76,8 +76,8 @@ public class Abitazione {
         this.numeroPiano = numeroPiano;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Abitazione{" +
                 "id='" + id + '\'' +
                 ", nome='" + nome + '\'' +
