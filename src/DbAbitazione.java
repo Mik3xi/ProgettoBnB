@@ -17,9 +17,26 @@ public class DbAbitazione {
         this.databaseAbitazione = databaseAbitazione;
     }
 
-    public void rilevaPrenotazioni(Integer key){
-        databaseAbitazione.get(key);
+    public int numeroPrenotazioni(Integer key){
+        return databaseAbitazione.get(key).size();
     }
+
+
+    public int abitazioneGettonata(){
+        int maxprenotazioni=0;
+        int idgettonato=0;
+            for (Integer integer : databaseAbitazione.keySet()) {
+                if (numeroPrenotazioni(integer)>maxprenotazioni) {
+                    maxprenotazioni = numeroPrenotazioni();
+                    idgettonato = integer;
+                }
+            }
+            return idgettonato;
+        }
+    }
+
+
+
 
 
 }
