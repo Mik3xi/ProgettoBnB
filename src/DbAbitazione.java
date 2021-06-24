@@ -39,17 +39,15 @@ public class DbAbitazione {
         ArrayList<Integer> idgettonato= new ArrayList<>();
             for (Integer integer : databasePrenotazione.keySet()) {
             for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
-                    if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
+                if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
-                }
-                if(prenotazioniLastMonth.size()>=maxprenotazioni && maxprenotazioni!=0) {
-                    maxprenotazioni = prenotazioniLastMonth.size();
-                    idgettonato.add(integer);
-                }else {
-                    prenotazioniLastMonth.clear();
+            }
+            if(prenotazioniLastMonth.size()>=maxprenotazioni && maxprenotazioni!=0) {
+                maxprenotazioni = prenotazioniLastMonth.size();
+                idgettonato.add(integer);
+            } else prenotazioniLastMonth.clear();
             }
             return databaseAbitazioni.get(idgettonato);
-        }
 
     }
 
