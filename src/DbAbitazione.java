@@ -1,25 +1,60 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class DbAbitazione {
-    Map<Integer, Set<Prenotazione>> databaseAbitazione = new HashMap<Integer, Set<Prenotazione>>();
+    private Map<Integer, Set<Prenotazione>> databasePrenotazione = new HashMap<Integer, Set<Prenotazione>>();
+    private Map<Integer, Abitazione>  databaseAbitazioni = new HashMap<>();
 
     public DbAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
-        this.databaseAbitazione = databaseAbitazione;
+        this.databasePrenotazione = databaseAbitazione;
     }
 
     public Map<Integer, Set<Prenotazione>> getDatabaseAbitazione() {
-        return databaseAbitazione;
+        return databasePrenotazione;
     }
 
     public void setDatabaseAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
-        this.databaseAbitazione = databaseAbitazione;
+        this.databasePrenotazione = databaseAbitazione;
     }
 
-    public void rilevaPrenotazioni(Integer key){
-        databaseAbitazione.get(key);
+    public Map<Integer, Abitazione> getDatabaseAbitazioni() {
+        return databaseAbitazioni;
     }
+
+    public void setDatabaseAbitazioni(Map<Integer, Abitazione> databaseAbitazioni) {
+        this.databaseAbitazioni = databaseAbitazioni;
+    }
+
+    public int numeroPrenotazioni(Integer key){
+        return databasePrenotazione.get(key).size();
+    }
+
+
+    public Abitazione abitazioneGettonata(){
+        ArrayList<Prenotazione> prenotazioniLastMonth = new ArrayList<>();
+        int maxprenotazioni=0;
+        ArrayList<Integer> idgettonato= new ArrayList<>();
+            for (Integer integer : databasePrenotazione.keySet()) {
+            for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
+                    if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
+                        prenotazioniLastMonth.add(prenotazione);
+                }
+                if(prenotazioniLastMonth.size()>=maxprenotazioni && maxprenotazioni!=0) {
+                    maxprenotazioni = prenotazioniLastMonth.size();
+                    idgettonato.add(integer);
+                }else {
+                    prenotazioniLastMonth.clear();
+            }
+            return databaseAbitazioni.get(idgettonato);
+        }
+
+    }
+
+
+
 
 
 }
