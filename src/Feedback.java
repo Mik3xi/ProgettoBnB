@@ -32,12 +32,10 @@ public class Feedback {
     public int getValutazione() {
         return valutazione.getValue();
     }
-    //fine get/setter
-
-
     public void setValutazione(Valutazione valutazione) {
         this.valutazione = valutazione;
     }
+    //fine get/setter
 
     private String titolo;
     private String id;
