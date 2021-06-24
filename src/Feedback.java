@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /*
     SPUNTI :
     1)ogni feedback sara lasicato da un utente
@@ -36,26 +38,57 @@ public class Feedback {
         this.valutazione = valutazione;
     }
     //fine get/setter
+    public Feedback aggiungivalutazione(String titolo, String id, String testo,Valutazione valutazione){
+
+        return new Feedback( titolo,id, testo,valutazione);
+
+    }
+    //metodi to string e equals e compare to
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Feedback)) return false;
+        Feedback feedback = (Feedback) o;
+        return Objects.equals(titolo, feedback.titolo) && Objects.equals(id, feedback.id) && Objects.equals(testo, feedback.testo) && valutazione == feedback.valutazione;
+    }
+
+    @Override
+    public String toString() {
+        return "Feedback{" +
+                "titolo='" + titolo + '\'' +
+                ", id='" + id + '\'' +
+                ", testo='" + testo + '\'' +
+                ", valutazione=" + valutazione +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titolo, id, testo, valutazione);
+    }
 
     private String titolo;
     private String id;
     private String testo;
     private Valutazione valutazione;
 
-    public Feedback(String titolo, String id, String testo) {
+
+    public Feedback(String titolo, String id, String testo, Valutazione valutazione) {
 
         setId(id);
         setTesto(testo);
-        //setValutazione(valutazione);
+        setValutazione(valutazione);
         setTitolo(titolo);
     }
 
-    private enum Valutazione {
+    enum Valutazione {
         //valutazione che prenderea in ingresso sempre un int(1-5) restituira valore del feedback
         PESSIMO(1), SCARSO(2), DISCRETO(3), BUONO(4), OTTIMO(5);
         private final int value;
 
-        private Valutazione(int value) {
+        Valutazione(int value) {
             this.value = value;
         }
 
