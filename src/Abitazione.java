@@ -1,7 +1,7 @@
 import java.util.Objects;
 import java.util.UUID;
 
-public class Abitazione{
+public class Abitazione {
 
     //ATTRIBUTI
     private int id;

@@ -67,8 +67,11 @@ public class DbAbitazione {
         return media=sum/cont;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "DbAbitazione{" + ", databaseAbitazioni=" + databaseAbitazioni +
+                '}';
+    }
 
 }
 

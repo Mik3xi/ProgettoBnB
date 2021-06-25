@@ -10,6 +10,8 @@ public class MainBnb {
     private static DbUtente dbUtenti;
     private static DbHost dbHost;
     private static DbAbitazione dbAbitazioni;
+    private static Dbprenotazioni dbPrenotazioni;
+
 
 
     public static void main(String[] args) {
@@ -17,6 +19,8 @@ public class MainBnb {
         dbUtenti = new DbUtente(popolaDbUtenti());
         dbHost = new DbHost(popolaDbHost());
         dbAbitazioni = new DbAbitazione(popolaDbAbitazioni());
+        dbPrenotazioni = new Dbprenotazioni();
+        Utente utenteAutenticato;
 
         System.out.println("--------- Benvenuto in RoomOneBnb! --------- ");
         System.out.println("\nCosa vuoi fare? \n1. Effettua il Login\n2. Registrati\n3. Esci");  //Login come utente,host, admin(?) per la varie funzioni.
@@ -27,7 +31,7 @@ public class MainBnb {
 
         switch(scelta) {
             case 1:
-                autenticazione();
+                utenteAutenticato = autenticazione();
                 break;
             case 2:
                 registraNuovoUtente();
@@ -141,7 +145,7 @@ public class MainBnb {
         }
     }
 
-    public static boolean autenticazione(){
+    public static Utente autenticazione(){
 
         Utente u = null;
         Boolean flag = false;
@@ -185,18 +189,12 @@ public class MainBnb {
             psw = scan.nextLine();
         }
         System.out.println("Bentornato " + u.getNome() + "!");
-        return true;
+        return u;
     }
 
-    public static void effettuaPrenotazione(){
-
-        //Inserisci data inizio e fine che ti interessa
-        //Mostra le abitazioni disponibili per quell'intervallo (prezzo etc.)
-        //Dare la possibilità di sceglierne una e confermare
-        //A questo punto crea l'oggetto prenotazione
-        //Aggiungi la prenotazione nel set dell'utente che ha prenotato
-        //Aggiungi la prenotazione al Db delle prenotazioni
-
+    public static void effettuaPrenotazione(Utente u){
+        //CheckAbitazioniDisponibili
+        //dbPrenotazioni.aggiungiprenotazione(u.getId(), );
     }
 
 }
