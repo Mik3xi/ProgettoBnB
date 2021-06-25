@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DbUtente {
+    //int chiave utente,oggetto
     Map<Integer,Utente> databaseUtente = new HashMap<>();
 
 
