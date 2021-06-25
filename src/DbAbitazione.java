@@ -8,8 +8,7 @@ public class DbAbitazione {
     private Map<Integer, Set<Prenotazione>> PrenotazioniPerAbitazione = new HashMap<Integer, Set<Prenotazione>>();  // key id abitazione value: set prenotazioni
     private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>(); // key: id abitazione value: abitazione
 
-    public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
-        this.PrenotazioniPerAbitazione = databasePrenotazione;
+    public DbAbitazione( Map<Integer, Abitazione> databaseAbitazioni) {
         this.databaseAbitazioni = databaseAbitazioni;
     }
 
@@ -43,7 +42,7 @@ public class DbAbitazione {
         ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
             for (Integer integer : PrenotazioniPerAbitazione.keySet()) {
             for (Prenotazione prenotazione : PrenotazioniPerAbitazione.get(integer)) {
-                if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
+                if(prenotazione.getDataprenotazione().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
             }
             if(prenotazioniLastMonth.size()>=maxprenotazioni && maxprenotazioni!=0) {
