@@ -16,6 +16,8 @@ public class MainBnb {
         System.out.println("------ Benvenuto in RoomOneBnb! ------ ");
         System.out.println("1. Effettua il Login\n2. Registrati\n3. Esci");  //Login come utente,host, admin(?) per la varie funzioni.
 
+        registraNuovoUtente();
+
 
     }
 
@@ -65,7 +67,7 @@ public class MainBnb {
     }
 
 
-    public void RegistraNuovoUtente(){
+    public static void registraNuovoUtente(){
 
         System.out.println("Inserisci il tuo nome: ");
         String nome = scan.nextLine();
