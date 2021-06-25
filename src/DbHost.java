@@ -53,14 +53,23 @@ public class DbHost {
 
     public Host majorHostPrenotazioni(DbAbitazione db){
         // ogni host ha set abitazioni, ogni abitazione ha id, prenotazioniAbitazione.get(id).size()
-        for (Integer integer : getDbHost().keySet()) {
-            for (Abitazione abitazione : getDbHost().get(integer).getAbitazioni()) {
-                for (Integer key : db.getPrenotazioniPerAbitazione().keySet()) {
-                    if (abitazione.getId())
 
+
+        int idHostmax=-1; //  inizializzo a -1 per controllare se esce un id host vero, ci vorrebbe un eccezione
+        int prenotazionimax=0;
+        for (Integer idHost : getDbHost().keySet()) {
+            for (Abitazione abitazione : getDbHost().get(idHost).getAbitazioni()) {
+                for (Integer key : db.getPrenotazioniPerAbitazione().keySet()) {
+                    if (abitazione.getId()==key){
+                        if (prenotazionimax<db.getPrenotazioniPerAbitazione().get(key).size()) {
+                            prenotazionimax = db.getPrenotazioniPerAbitazione().get(key).size();
+                            idHostmax=idHost;
+                        }
+                    }
                 }
             }
         }
+        return getDbHost().get(idHostmax);
     } // host con più prenotazioni
 }
 
