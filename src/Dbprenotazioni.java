@@ -5,7 +5,7 @@ import java.util.TreeSet;
 public class Dbprenotazioni {
     //Mappa con key=> Id utente e Treset Di prenotazioni
     // SPunto da concordare =>Treset di prenotazioni per ordinare in base alla Data
-    // se OK treSet RICORDA di utilizzare iterator per implementazione
+    //  OK treSet RICORDA di utilizzare iterator per implementazione
     private HashMap<Integer, TreeSet<Prenotazione>> prenotazioni=new HashMap<>();
     //GETTER && SETTER
     public HashMap<Integer, TreeSet<Prenotazione>> getPrenotazioni() { return prenotazioni; }
