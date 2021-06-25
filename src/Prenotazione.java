@@ -93,7 +93,7 @@ public void setDataInizio(LocalDate data) {
 		
 		this.host = host;
 	}
-
+//POTENZIALE PROBLEMA CONTROLLARE EQUALS
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
