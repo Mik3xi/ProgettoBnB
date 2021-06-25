@@ -49,6 +49,11 @@ public class DbHost {
         }
         return superHostALL;
     }
+
+
+    public Host majorHostPrenotazioni(DbAbitazione db){
+      db.getPrenot
+    } // host con più prenotazioni
 }
 
 
