@@ -8,8 +8,7 @@ public class DbAbitazione {
     private Map<Integer, Set<Prenotazione>> PrenotazioniPerAbitazione = new HashMap<Integer, Set<Prenotazione>>();  // key id abitazione value: set prenotazioni
     private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>(); // key: id abitazione value: abitazione
 
-    public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
-        this.PrenotazioniPerAbitazione = databasePrenotazione;
+    public DbAbitazione( Map<Integer, Abitazione> databaseAbitazioni) {
         this.databaseAbitazioni = databaseAbitazioni;
     }
 
