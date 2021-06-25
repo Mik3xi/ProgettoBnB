@@ -6,12 +6,14 @@ import java.util.Set;
 
 public class DbAbitazione {
     private Map<Integer, Set<Prenotazione>> databasePrenotazione = new HashMap<Integer, Set<Prenotazione>>();
-    private Map<Integer, Abitazione>  databaseAbitazioni = new HashMap<>();
+    private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>();
 
-    public DbAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
-        this.databasePrenotazione = databaseAbitazione;
+    public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
+        this.databasePrenotazione = databasePrenotazione;
+        this.databaseAbitazioni = databaseAbitazioni;
     }
 
+    // getters and setters
     public Map<Integer, Set<Prenotazione>> getDatabaseAbitazione() {
         return databasePrenotazione;
     }
@@ -28,11 +30,12 @@ public class DbAbitazione {
         this.databaseAbitazioni = databaseAbitazioni;
     }
 
-    public int numeroPrenotazioni(Integer key){
+    public int numeroPrenotazioni(Integer key){ // ritorna il numero di prenotazioni totali di un abitazioni
         return databasePrenotazione.get(key).size();
     }
 
-    public ArrayList<Abitazione> abitazioneGettonataDelMese(){
+    public ArrayList<Abitazione> abitazioneGettonataDelMese(){ // ritorna l'abitazione gettonata del mese corrente
+
         ArrayList<Prenotazione> prenotazioniLastMonth = new ArrayList<>();
         int maxprenotazioni = 0;
         ArrayList<Integer> idgettonato = new ArrayList<>();
@@ -50,12 +53,18 @@ public class DbAbitazione {
 
             for (Integer integer : idgettonato)
             abitazioneGettonata.add(getDatabaseAbitazioni().get(idgettonato));
-
             return abitazioneGettonata;
     }
 
 
 
 
-
 }
+
+
+
+
+
+
+
+
