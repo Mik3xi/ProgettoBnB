@@ -1,23 +1,47 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Dbprenotazioni {
     //Mappa con key=> Id utente e Treset Di prenotazioni
-    // SPunto da concordare =>Treset di prenotazioni per ordinare in base alla Data
-    //  OK treSet RICORDA di utilizzare iterator per implementazione
-    private HashMap<Integer, TreeSet<Prenotazione>> prenotazioni=new HashMap<>();
+    // CAMBIO DA TREESET A HASHSET
+    // PER ACCEDERE ALL ULTIMA PRENOTAZIONE DELL'UTENTE UTILIZIAMO IL SUO ATTRIBUTO CODA
+    private HashMap<Integer, HashSet<Prenotazione>> prenotazioni=new HashMap<>();
     //GETTER && SETTER
-    public HashMap<Integer, TreeSet<Prenotazione>> getPrenotazioni() { return prenotazioni; }
-    public void setPrenotazioni(HashMap<Integer, TreeSet<Prenotazione>> prenotazioni) { this.prenotazioni = prenotazioni; }
+    public HashMap<Integer, HashSet<Prenotazione>> getPrenotazioni() { return prenotazioni; }
+    public void setPrenotazioni(HashMap<Integer, HashSet<Prenotazione>> prenotazioni) { this.prenotazioni = prenotazioni; }
     //CRUD
-    public void aggiungiprenotazione(Integer id,Prenotazione prenotazione){
+    public void aggiungiprenotazione(Integer id,Abitazione abitazione) throws ParseException {
+        LocalDate datadiprenotazione = LocalDate.now();
+        System.out.println("Inserisci la data di Arrivo");
+        Scanner sc=new Scanner(System.in);
+        String arrivo=sc.nextLine();
+        Date datapartenza= new SimpleDateFormat("dd/MM/yyyy").parse(arrivo);
+        System.out.println("Inserisci la data di Partenza");
+        Scanner sc1=new Scanner(System.in);
+        String partenza=sc1.nextLine();
+        Date dataarrivo= new SimpleDateFormat("dd/MM/yyyy").parse(partenza);
 
-        TreeSet<Prenotazione> pren=new TreeSet<>();
-        Iterator<Prenotazione>iter=pren.iterator();
-        //crea nuova prenotazione
-        Prenotazione pre= new Prenotazione ();
-        //getPrenotazioni().put(id,pren.add(prenotazione));
+        //se non esiste una chiave quindi l'utente in prenotazini allora mi crei tutto
+        if(! getPrenotazioni().containsKey(id))
+        {
+          HashSet<Prenotazione> pren = new HashSet<>();
+          //crea nuova prenotazione
+            //Data partenza data arrivo e ID OK
+            //Come accedere ad Abitazione da affitare?
+            Prenotazione pre = new Prenotazione();
+          pren.add(pre);
+          getPrenotazioni().put(id, pren);
+          System.out.println("Utente "+id+" ha nuova prenotazione");
+        }
+        else
+        {
+          Prenotazione pre = new Prenotazione();
+           getPrenotazioni().get(id).add(pre);
+
+      }
+
     }
 
 }

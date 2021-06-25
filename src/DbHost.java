@@ -52,7 +52,15 @@ public class DbHost {
 
 
     public Host majorHostPrenotazioni(DbAbitazione db){
-      db.getPrenot
+        // ogni host ha set abitazioni, ogni abitazione ha id, prenotazioniAbitazione.get(id).size()
+        for (Integer integer : getDbHost().keySet()) {
+            for (Abitazione abitazione : getDbHost().get(integer).getAbitazioni()) {
+                for (Integer key : db.getPrenotazioniPerAbitazione().keySet()) {
+                    if (abitazione.getId())
+
+                }
+            }
+        }
     } // host con più prenotazioni
 }
 
