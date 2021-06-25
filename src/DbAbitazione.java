@@ -32,11 +32,11 @@ public class DbAbitazione {
         return databasePrenotazione.get(key).size();
     }
 
-
-    public Abitazione abitazioneGettonata(){
+    public ArrayList<Abitazione> abitazioneGettonataDelMese(){
         ArrayList<Prenotazione> prenotazioniLastMonth = new ArrayList<>();
-        int maxprenotazioni=0;
-        ArrayList<Integer> idgettonato= new ArrayList<>();
+        int maxprenotazioni = 0;
+        ArrayList<Integer> idgettonato = new ArrayList<>();
+        ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
             for (Integer integer : databasePrenotazione.keySet()) {
             for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
                 if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
@@ -47,7 +47,11 @@ public class DbAbitazione {
                 idgettonato.add(integer);
             } else prenotazioniLastMonth.clear();
             }
-            return databaseAbitazioni.get(idgettonato);
+
+            for (Integer integer : idgettonato)
+            abitazioneGettonata.add(getDatabaseAbitazioni().get(idgettonato));
+
+            return abitazioneGettonata;
     }
 
 
