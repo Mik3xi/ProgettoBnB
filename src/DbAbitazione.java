@@ -43,7 +43,7 @@ public class DbAbitazione {
         ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
             for (Integer integer : PrenotazioniPerAbitazione.keySet()) {
             for (Prenotazione prenotazione : PrenotazioniPerAbitazione.get(integer)) {
-                if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
+                if(prenotazione.getDataprenotazione().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
             }
             if(prenotazioniLastMonth.size()>=maxprenotazioni && maxprenotazioni!=0) {
