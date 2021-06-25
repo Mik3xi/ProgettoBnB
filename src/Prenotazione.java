@@ -1,6 +1,8 @@
 
 import java.time.*;
-public class Prenotazione {
+import java.util.Objects;
+
+public class Prenotazione implements Comparable<Prenotazione>{
 	
 	
 	/**
@@ -14,7 +16,7 @@ public class Prenotazione {
 		private String idPrenotazione;
 		private LocalDate dataInizio,dataFine;
 		private Abitazione home;
-		private Utente user;
+		private Host host;
 		
 		
 		
@@ -25,9 +27,9 @@ public String getIdPrenotazione() {
 		
 		
 
-public Utente getUtente() {
+public Utente getHost() {
 		
-		return this.user;
+		return this.host;
 	}
 
 
@@ -87,11 +89,31 @@ public void setDataInizio(LocalDate data) {
 
 
 
-	public void setUtente(Utente ut) {
+	public void setHost(Host host) {
 		
-		this.user = ut;
+		this.host = host;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Prenotazione)) return false;
+		Prenotazione that = (Prenotazione) o;
+		return Objects.equals(idPrenotazione, that.idPrenotazione) && Objects.equals(dataInizio, that.dataInizio) && Objects.equals(dataFine, that.dataFine) && Objects.equals(home, that.home) && Objects.equals(host, that.host);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idPrenotazione, dataInizio, dataFine, home, host);
+	}
+
+	@Override
+	public int compareTo(Prenotazione o) {
+	     if(this.getDataInizio().isAfter(o.getDataInizio()))
+	     	return 1;
+	     else
+	     	return -1;
+	}
+}
 
 
