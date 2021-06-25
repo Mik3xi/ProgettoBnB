@@ -9,12 +9,14 @@ public class MainBnb {
 
     private static DbUtente dbUtenti;
     private static DbHost dbHost;
+    private static DbAbitazione dbAbitazioni;
 
 
     public static void main(String[] args) {
 
         dbUtenti = new DbUtente(popolaDbUtenti());
         dbHost = new DbHost(popolaDbHost());
+        dbAbitazioni = new DbAbitazione(popolaDbAbitazioni());
 
         System.out.println("--------- Benvenuto in RoomOneBnb! --------- ");
         System.out.println("\nCosa vuoi fare? \n1. Effettua il Login\n2. Registrati\n3. Esci");  //Login come utente,host, admin(?) per la varie funzioni.
@@ -42,7 +44,7 @@ public class MainBnb {
             //Switch con quello che può fare un host
 
         }
-        
+
     }
 
 
@@ -88,6 +90,28 @@ public class MainBnb {
         insiemeDiHost.put(id3,h3);
 
         return insiemeDiHost;
+    }
+
+    public static HashMap<Integer,Abitazione> popolaDbAbitazioni(){
+
+        HashMap<Integer,Abitazione> insiemeDiAbitazioni = new HashMap<>();
+
+        Abitazione a1 = new Abitazione("Casa stupenda","Via Napoli 45",3,4,2);
+        Abitazione a2 = new Abitazione("Casa stupendissima","Via Lazio 12",2,3,1);
+        Abitazione a3 = new Abitazione("Casa bruttina","Via Roma 23",1,2,1);
+        Abitazione a4 = new Abitazione("Casa da paura","Via Napoli 2",4,6,3);
+
+        Integer id1 = a1.getId();
+        Integer id2 = a2.getId();
+        Integer id3 = a3.getId();
+        Integer id4 = a4.getId();
+
+        insiemeDiAbitazioni.put(id1,a1);
+        insiemeDiAbitazioni.put(id2,a2);
+        insiemeDiAbitazioni.put(id3,a3);
+        insiemeDiAbitazioni.put(id4,a4);
+
+        return insiemeDiAbitazioni;
     }
 
 
@@ -162,6 +186,17 @@ public class MainBnb {
         }
         System.out.println("Bentornato " + u.getNome() + "!");
         return true;
+    }
+
+    public static void effettuaPrenotazione(){
+
+        //Inserisci data inizio e fine che ti interessa
+        //Mostra le abitazioni disponibili per quell'intervallo (con prezzo etc)
+        //Dare la possibilità di sceglierne una e confermare
+        //A questo punto crea l'oggetto prenotazione
+        //Aggiungi la prenotazione nel set dell'utente che ha prenotato
+        //Aggiungi la prenotazione al Db delle prenotazioni
+        
     }
 
 }
