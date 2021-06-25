@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class DbAbitazione {
-    private Map<Integer, Set<Prenotazione>> PrenotazioniPerAbitazione = new HashMap<Integer, Set<Prenotazione>>();
-    private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>();
+    private Map<Integer, Set<Prenotazione>> PrenotazioniPerAbitazione = new HashMap<Integer, Set<Prenotazione>>();  // key id abitazione value: set prenotazioni
+    private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>(); // key: id abitazione value: abitazione
 
     public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
         this.PrenotazioniPerAbitazione = databasePrenotazione;
