@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class DbAbitazione {
     private Map<Integer, Set<Prenotazione>> databasePrenotazione = new HashMap<Integer, Set<Prenotazione>>();
-    private Map<Integer, Abitazione>  databaseAbitazioni = new HashMap<>();
+    private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>();
 
     public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
         this.databasePrenotazione = databasePrenotazione;
@@ -41,6 +41,14 @@ public class DbAbitazione {
         ArrayList<Integer> idgettonato = new ArrayList<>();
         ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
             for (Integer integer : databasePrenotazione.keySet()) {
+=======
+
+    public Abitazione abitazioneGettonata() {
+        ArrayList<Prenotazione> prenotazioniLastMonth = new ArrayList<>();
+        int maxprenotazioni = 0;
+        ArrayList<Integer> idgettonato = new ArrayList<>();
+        for (Integer integer : databasePrenotazione.keySet()) {
+>>>>>>> Stashed changes
             for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
                 if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
@@ -59,5 +67,12 @@ public class DbAbitazione {
 
 
 
-
 }
+
+
+
+
+
+
+
+
