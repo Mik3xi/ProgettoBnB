@@ -5,21 +5,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class DbAbitazione {
-    private Map<Integer, Set<Prenotazione>> prenotazioniSuAbitazione = new HashMap<Integer, Set<Prenotazione>>();
+    private Map<Integer, Set<Prenotazione>> PrenotazioniPerAbitazione = new HashMap<Integer, Set<Prenotazione>>();
     private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>();
 
     public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
-        this.prenotazioniSuAbitazione = databasePrenotazione;
+        this.PrenotazioniPerAbitazione = databasePrenotazione;
         this.databaseAbitazioni = databaseAbitazioni;
     }
 
+
     // getters and setters
-    public Map<Integer, Set<Prenotazione>> getDatabaseAbitazione() {
-        return prenotazioniSuAbitazione;
+    public Map<Integer, Set<Prenotazione>> getPrenotazioniPerAbitazione() {
+        return PrenotazioniPerAbitazione;
     }
 
-    public void setDatabaseAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
-        this.prenotazioniSuAbitazione = databaseAbitazione;
+    public void setPrenotazioniPerAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
+        this.PrenotazioniPerAbitazione = databaseAbitazione;
     }
 
     public Map<Integer, Abitazione> getDatabaseAbitazioni() {
@@ -31,7 +32,7 @@ public class DbAbitazione {
     }
 
     public int numeroPrenotazioni(Integer key){ // ritorna il numero di prenotazioni totali di un abitazioni
-        return prenotazioniSuAbitazione.get(key).size();
+        return PrenotazioniPerAbitazione.get(key).size();
     }
 
     public ArrayList<Abitazione> abitazioneGettonataDelMese(){ // ritorna l'abitazione gettonata del mese corrente
@@ -40,8 +41,8 @@ public class DbAbitazione {
         int maxprenotazioni = 0;
         ArrayList<Integer> idgettonato = new ArrayList<>();
         ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
-            for (Integer integer : prenotazioniSuAbitazione.keySet()) {
-            for (Prenotazione prenotazione : prenotazioniSuAbitazione.get(integer)) {
+            for (Integer integer : PrenotazioniPerAbitazione.keySet()) {
+            for (Prenotazione prenotazione : PrenotazioniPerAbitazione.get(integer)) {
                 if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
             }
@@ -54,6 +55,17 @@ public class DbAbitazione {
             for (Integer integer : idgettonato)
             abitazioneGettonata.add(getDatabaseAbitazioni().get(idgettonato));
             return abitazioneGettonata;
+    }
+
+    public int mediaPostiLetto(){
+        int sum=0;
+        int cont=0;
+        int media; // non float perché mezzo letto non mi piace
+        for (Integer key : getDatabaseAbitazioni().keySet()) {
+            sum+=getDatabaseAbitazioni().get(key).getNumeroPostiLetto();
+            cont++;
+        }
+        return media=sum/cont;
     }
 
 
