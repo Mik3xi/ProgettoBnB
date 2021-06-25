@@ -16,6 +16,8 @@ public class Prenotazione implements Comparable<Prenotazione>{
 	 */
 		private String idPrenotazione;
 
+
+
 	public LocalDate getDataprenotazione() {
 		return dataprenotazione;
 	}
@@ -31,12 +33,12 @@ public class Prenotazione implements Comparable<Prenotazione>{
 		
 
 
-	public Prenotazione(String idPrenotazione, Date dataInizio,Date dataFine,Abitazione home,Host host) {
+	public Prenotazione(String idPrenotazione, Date dataInizio,Date dataFine,Abitazione home,LocalDate dataprenotazione) {
 		setAbitazione(home);
 		setIdPrenotazione(idPrenotazione);
 		setDataFine(dataFine);
 		setDataInizio(dataInizio);
-		setHost(host);
+		setDataprenotazione(dataprenotazione);
 
 
 	}
