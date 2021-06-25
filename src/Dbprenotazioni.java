@@ -11,6 +11,7 @@ public class Dbprenotazioni {
     //GETTER && SETTER
     public HashMap<Integer, HashSet<Prenotazione>> getPrenotazioni() { return prenotazioni; }
     public void setPrenotazioni(HashMap<Integer, HashSet<Prenotazione>> prenotazioni) { this.prenotazioni = prenotazioni; }
+
     //CRUD
     public void aggiungiprenotazione(Integer id,Abitazione abitazione) throws ParseException {
         LocalDate datadiprenotazione = LocalDate.now();
@@ -23,9 +24,6 @@ public class Dbprenotazioni {
         String partenza=sc1.nextLine();
         Date dataarrivo= new SimpleDateFormat("dd/MM/yyyy").parse(partenza);
         //NB data arrivo e partenza sono Tipo DATE
-        System.out.println("inserisci id prenotazione");
-        Scanner sc12=new Scanner(System.in);
-        String id_Prenotazione= sc12.nextLine();
 
         //se non esiste una chiave quindi l'utente in prenotazini allora mi crei tutto
         if(! getPrenotazioni().containsKey(id))
@@ -34,14 +32,14 @@ public class Dbprenotazioni {
           //crea nuova prenotazione
             //Data partenza data arrivo e ID OK
             //Come accedere ad Abitazione da affitare?
-             Prenotazione pre = new Prenotazione(id_Prenotazione, dataarrivo, datapartenza,abitazione,datadiprenotazione);
+             Prenotazione pre = new Prenotazione(dataarrivo, datapartenza,abitazione,datadiprenotazione);
           pren.add(pre);
           getPrenotazioni().put(id, pren);
           System.out.println("Utente "+id+" ha nuova prenotazione");
         }
         else
         {
-          Prenotazione pre = new Prenotazione(id_Prenotazione, dataarrivo, datapartenza,abitazione,datadiprenotazione);;
+          Prenotazione pre = new Prenotazione(dataarrivo, datapartenza,abitazione,datadiprenotazione);;
            getPrenotazioni().get(id).add(pre);
 
       }

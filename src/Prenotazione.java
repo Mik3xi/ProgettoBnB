@@ -4,17 +4,13 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Prenotazione implements Comparable<Prenotazione>{
-	
-	
-	/**
-	 * id
-	 * datainizio
-	 * datafine
-	 * utente
-	 * abitazione
-	 *
-	 */
-		private String idPrenotazione;
+
+		private static int idPren = 1;
+		private int idPrenotazione;
+		private LocalDate dataprenotazione;
+		private Date dataInizio,dataFine;
+		private Abitazione home;
+		private Host host;
 
 
 
@@ -26,16 +22,11 @@ public class Prenotazione implements Comparable<Prenotazione>{
 		this.dataprenotazione = dataprenotazione;
 	}
 
-	private LocalDate dataprenotazione;
-		private Date dataInizio,dataFine;
-		private Abitazione home;
-		private Host host;
-		
 
+	public Prenotazione(Date dataInizio,Date dataFine,Abitazione home,LocalDate dataprenotazione) {
 
-	public Prenotazione(String idPrenotazione, Date dataInizio,Date dataFine,Abitazione home,LocalDate dataprenotazione) {
+		setIdPrenotazione();
 		setAbitazione(home);
-		setIdPrenotazione(idPrenotazione);
 		setDataFine(dataFine);
 		setDataInizio(dataInizio);
 		setDataprenotazione(dataprenotazione);
@@ -43,7 +34,7 @@ public class Prenotazione implements Comparable<Prenotazione>{
 
 	}
 
-	public String getIdPrenotazione() {
+	public int getIdPrenotazione() {
 			
 			return this.idPrenotazione;
 		}
@@ -82,8 +73,8 @@ public Abitazione getAbitazione() {
 
 
 
-public void setIdPrenotazione(String id) {
-		 this.idPrenotazione = id;
+public void setIdPrenotazione() {
+		 this.idPrenotazione = idPren++;
 	}
 
 

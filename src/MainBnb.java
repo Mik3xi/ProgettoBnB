@@ -191,12 +191,12 @@ public class MainBnb {
     public static void effettuaPrenotazione(){
 
         //Inserisci data inizio e fine che ti interessa
-        //Mostra le abitazioni disponibili per quell'intervallo (con prezzo etc)
+        //Mostra le abitazioni disponibili per quell'intervallo (prezzo etc.)
         //Dare la possibilità di sceglierne una e confermare
         //A questo punto crea l'oggetto prenotazione
         //Aggiungi la prenotazione nel set dell'utente che ha prenotato
         //Aggiungi la prenotazione al Db delle prenotazioni
-        
+
     }
 
 }
