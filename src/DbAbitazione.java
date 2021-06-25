@@ -56,6 +56,17 @@ public class DbAbitazione {
             return abitazioneGettonata;
     }
 
+    public int mediaPostiLetto(){
+        int sum=0;
+        int cont=0;
+        int media; // non float perché mezzo letto non mi piace
+        for (Integer key : getDatabaseAbitazioni().keySet()) {
+            sum+=getDatabaseAbitazioni().get(key).getNumeroPostiLetto();
+            cont++
+        }
+        return media=sum/cont
+    }
+
 
 
 
