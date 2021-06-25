@@ -38,6 +38,9 @@ public class DbHost {
         return host;
     }
 
+
+    public Set<Abitazione> stampaAbitazioniHost(Integer idHost){ return getDbHost().get(idHost).getAbitazioni(); }
+
     public Set<Host> ricercaSuperHost() {
         Set<Host> superHostALL = new HashSet<>();
         for (Integer key : getDbHost().keySet()) {
