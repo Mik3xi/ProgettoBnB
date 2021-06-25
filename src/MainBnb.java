@@ -81,12 +81,12 @@ public class MainBnb {
         String password = scan.nextLine();
         System.out.println("Vuoi registrarti come utente o come host?");
         String scelta = scan.nextLine();
-        if(scelta == "utente"){
+        if(scelta.equals("utente")){
             Utente u = new Utente(nome,cognome,email,username,password);
             dbUtenti.aggiungiutente(u);
             System.out.println("Complimenti, ti sei registrato con successo come utente!");
         }
-        else {
+        else if (scelta.equals("host")){
             Host h = new Host(nome,cognome,email,username,password);
             dbHost.aggiungihost(h);
             System.out.println("Complimenti, ti sei registrato con successo come host!");

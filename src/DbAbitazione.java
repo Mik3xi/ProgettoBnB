@@ -5,21 +5,21 @@ import java.util.Map;
 import java.util.Set;
 
 public class DbAbitazione {
-    private Map<Integer, Set<Prenotazione>> databasePrenotazione = new HashMap<Integer, Set<Prenotazione>>();
-    private Map<Integer, Abitazione>  databaseAbitazioni = new HashMap<>();
+    private Map<Integer, Set<Prenotazione>> prenotazioniSuAbitazione = new HashMap<Integer, Set<Prenotazione>>();
+    private Map<Integer, Abitazione> databaseAbitazioni = new HashMap<>();
 
     public DbAbitazione(Map<Integer, Set<Prenotazione>> databasePrenotazione, Map<Integer, Abitazione> databaseAbitazioni) {
-        this.databasePrenotazione = databasePrenotazione;
+        this.prenotazioniSuAbitazione = databasePrenotazione;
         this.databaseAbitazioni = databaseAbitazioni;
     }
 
     // getters and setters
     public Map<Integer, Set<Prenotazione>> getDatabaseAbitazione() {
-        return databasePrenotazione;
+        return prenotazioniSuAbitazione;
     }
 
     public void setDatabaseAbitazione(Map<Integer, Set<Prenotazione>> databaseAbitazione) {
-        this.databasePrenotazione = databaseAbitazione;
+        this.prenotazioniSuAbitazione = databaseAbitazione;
     }
 
     public Map<Integer, Abitazione> getDatabaseAbitazioni() {
@@ -31,7 +31,7 @@ public class DbAbitazione {
     }
 
     public int numeroPrenotazioni(Integer key){ // ritorna il numero di prenotazioni totali di un abitazioni
-        return databasePrenotazione.get(key).size();
+        return prenotazioniSuAbitazione.get(key).size();
     }
 
     public ArrayList<Abitazione> abitazioneGettonataDelMese(){ // ritorna l'abitazione gettonata del mese corrente
@@ -40,8 +40,8 @@ public class DbAbitazione {
         int maxprenotazioni = 0;
         ArrayList<Integer> idgettonato = new ArrayList<>();
         ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
-            for (Integer integer : databasePrenotazione.keySet()) {
-            for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
+            for (Integer integer : prenotazioniSuAbitazione.keySet()) {
+            for (Prenotazione prenotazione : prenotazioniSuAbitazione.get(integer)) {
                 if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
             }
@@ -59,5 +59,12 @@ public class DbAbitazione {
 
 
 
-
 }
+
+
+
+
+
+
+
+
