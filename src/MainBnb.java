@@ -5,30 +5,54 @@ import java.util.Scanner;
 public class MainBnb {
 
     public static Scanner scan = new Scanner(System.in);
+    private static int UoH; //Per riconoscere se sono autenticato come utente o host
+
     private static DbUtente dbUtenti;
     private static DbHost dbHost;
+
 
     public static void main(String[] args) {
 
         dbUtenti = new DbUtente(popolaDbUtenti());
         dbHost = new DbHost(popolaDbHost());
 
-        System.out.println("------ Benvenuto in RoomOneBnb! ------ ");
-        System.out.println("1. Effettua il Login\n2. Registrati\n3. Esci");  //Login come utente,host, admin(?) per la varie funzioni.
+        System.out.println("--------- Benvenuto in RoomOneBnb! --------- ");
+        System.out.println("\nCosa vuoi fare? \n1. Effettua il Login\n2. Registrati\n3. Esci");  //Login come utente,host, admin(?) per la varie funzioni.
+        int scelta;
+        Scanner scan1 = new Scanner(System.in);
+        scelta = scan1.nextInt();
 
-        registraNuovoUtente();
 
+        switch(scelta) {
+            case 1:
+                autenticazione();
+                break;
+            case 2:
+                registraNuovoUtente();
+                break;
+            case 3:
+                System.out.println("Arrivederci!");
+                break;
+        }
 
+        if(UoH == 1){
+            //Switch con quello che può fare un utente
+        }
+        else if(UoH == 2){
+            //Switch con quello che può fare un host
+
+        }
+        
     }
 
 
     public static HashMap<Integer,Utente> popolaDbUtenti(){
 
-        Utente u1 = new Utente("Michele","Liccardo","mik3xi@live.it","Mik3xi","treeschool55");
-        Utente u2 = new Utente("Agostino","Nicotra","agonick@gmail.com","agonick","treeschool55");
-        Utente u3 = new Utente("Ange","Kadja","ange237@live.it","ange237","treeschool55");
-        Utente u4 = new Utente("Ruben","La Rocca","quelbaffobastardo@yahoo.it","quelbaffo","treeschool55");
-        Utente u5 = new Utente("Michela","D'avino","mikadd@hotmail.it","mikadd","treeschool55");
+        Utente u1 = new Utente("Michele","Liccardo","mik3xi@live.it","Mik3xi","treeschool50");
+        Utente u2 = new Utente("Agostino","Nicotra","agonick@gmail.com","agonick","treeschool51");
+        Utente u3 = new Utente("Ange","Kadja","ange237@live.it","ange237","treeschool52");
+        Utente u4 = new Utente("Ruben","La Rocca","quelbaffobastardo@yahoo.it","quelbaffo","treeschool53");
+        Utente u5 = new Utente("Michela","D'avino","mikadd@hotmail.it","mikadd","treeschool54");
 
         Integer id1 = u1.getId();
         Integer id2 = u2.getId();
@@ -50,8 +74,8 @@ public class MainBnb {
     public static HashMap<Integer,Host> popolaDbHost(){
 
         Host h1 = new Host("Melvin","Massotti","melvmass@live.it","Melvmass","treeschool55");
-        Host h2 = new Host("Riccardo","Pozzati","riccpozz@gmail.com","Riccpozz","treeschool55");
-        Host h3 = new Host("Andrea","Rosati","andreros@gmail.com","Jaeger","treeschool55");
+        Host h2 = new Host("Riccardo","Pozzati","riccpozz@gmail.com","Riccpozz","treeschool56");
+        Host h3 = new Host("Andrea","Rosati","andreros@gmail.com","Jaeger","treeschool57");
 
         Integer id1 = h1.getId();
         Integer id2 = h2.getId();
@@ -91,6 +115,53 @@ public class MainBnb {
             dbHost.aggiungihost(h);
             System.out.println("Complimenti, ti sei registrato con successo come host!");
         }
+    }
+
+    public static boolean autenticazione(){
+
+        Utente u = null;
+        Boolean flag = false;
+
+        while(!flag) {
+
+            System.out.println("Inserisci l'username: ");
+            String username = scan.nextLine();
+
+            //RICERCA DB UTENTI
+            for (Map.Entry<Integer, Utente> entry : dbUtenti.getDatabaseUtente().entrySet()) {
+                if (entry.getValue().getUsername().equals(username)) {
+                    u = entry.getValue();
+                    flag = true;
+                    UoH = 1;
+                    break;
+                }
+            }
+
+            //RICERCA DB HOST
+            for (Map.Entry<Integer, Host> entry : dbHost.getDbHost().entrySet()) {
+                if (entry.getValue().getUsername().equals(username)) {
+                    u = entry.getValue();
+                    flag = true;
+                    UoH = 2;
+                    break;
+                }
+            }
+
+            if(!flag){
+                System.out.println("Username inesistente!");
+            }
+
+        }
+
+
+        System.out.println("Inserisci la password: ");
+        String psw = scan.nextLine();
+        while(!(u.getPassword().equals(psw))){
+            System.out.println("Password errata! Riprova: ");
+            psw = scan.nextLine();
+        }
+        System.out.println("Bentornato " + u.getNome() + "!");
+        return true;
     }
 
 }

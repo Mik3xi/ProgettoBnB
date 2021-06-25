@@ -1,5 +1,6 @@
 
 import java.time.*;
+import java.util.Date;
 import java.util.Objects;
 
 public class Prenotazione implements Comparable<Prenotazione>{
@@ -14,13 +15,33 @@ public class Prenotazione implements Comparable<Prenotazione>{
 	 *
 	 */
 		private String idPrenotazione;
-		private LocalDate dataInizio,dataFine;
+
+	public LocalDate getDataprenotazione() {
+		return dataprenotazione;
+	}
+
+	public void setDataprenotazione(LocalDate dataprenotazione) {
+		this.dataprenotazione = dataprenotazione;
+	}
+
+	private LocalDate dataprenotazione;
+		private Date dataInizio,dataFine;
 		private Abitazione home;
 		private Host host;
 		
-		
-		
-public String getIdPrenotazione() {
+
+
+	public Prenotazione(String idPrenotazione, Date dataInizio,Date dataFine,Abitazione home,Host host) {
+		setAbitazione(home);
+		setIdPrenotazione(idPrenotazione);
+		setDataFine(dataFine);
+		setDataInizio(dataInizio);
+		setHost(host);
+
+
+	}
+
+	public String getIdPrenotazione() {
 			
 			return this.idPrenotazione;
 		}
@@ -35,7 +56,7 @@ public Utente getHost() {
 
 
 
-public LocalDate getDataInizio() {
+public Date getDataInizio() {
 
 		return this.dataInizio;
 	}
@@ -44,7 +65,7 @@ public LocalDate getDataInizio() {
 
 
 
-public LocalDate getDataFine() {
+public Date getDataFine() {
 
 		return this.dataFine;
 	}
@@ -66,7 +87,8 @@ public void setIdPrenotazione(String id) {
 
 
 
-public void setDataInizio(LocalDate data) {
+public void setDataInizio(Date data) {
+
 		
 		this.dataInizio = data;
 	}
@@ -74,7 +96,7 @@ public void setDataInizio(LocalDate data) {
 
 
 
-	public void setDataFine(LocalDate data) {
+	public void setDataFine(Date data) {
 		
 		this.dataFine = data;
 	}
@@ -109,7 +131,7 @@ public void setDataInizio(LocalDate data) {
 
 	@Override
 	public int compareTo(Prenotazione o) {
-	     if(this.getDataInizio().isAfter(o.getDataInizio()))
+	     if(this.getDataprenotazione().isAfter(o.getDataprenotazione()))
 	     	return 1;
 	     else
 	     	return -1;
