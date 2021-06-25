@@ -41,14 +41,6 @@ public class DbAbitazione {
         ArrayList<Integer> idgettonato = new ArrayList<>();
         ArrayList<Abitazione> abitazioneGettonata = new ArrayList<>();
             for (Integer integer : databasePrenotazione.keySet()) {
-=======
-
-    public Abitazione abitazioneGettonata() {
-        ArrayList<Prenotazione> prenotazioniLastMonth = new ArrayList<>();
-        int maxprenotazioni = 0;
-        ArrayList<Integer> idgettonato = new ArrayList<>();
-        for (Integer integer : databasePrenotazione.keySet()) {
->>>>>>> Stashed changes
             for (Prenotazione prenotazione : databasePrenotazione.get(integer)) {
                 if(prenotazione.getDataInizio().getMonth().equals(LocalDate.now().getMonth())) // controllo del mese
                         prenotazioniLastMonth.add(prenotazione);
